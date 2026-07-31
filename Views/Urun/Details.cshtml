@@ -14,7 +14,7 @@
                             <img src="~/img/1.jpeg" height="60" alt="">
                         </a>
                         <a href="~/img/2-big.jpeg" data-type="image" data-fslightbox>
-                            <img src="~/img/2.jpeg" height="60"  alt="">
+                            <img src="~/img/2.jpeg" height="60" alt="">
                         </a>
                         <a href="~/img/3-big.jpeg" data-type="image" data-fslightbox>
                             <img src="~/img/3.jpeg" height="60" alt="">
@@ -67,86 +67,41 @@
     </div>
 </section>
 
-<section class="mt-3">
-    <div class="container">
-        <h4 class="mb-3">Benzer Ürünler</h4>
-        <div class="row gy-3">
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="card shadow">
-                    <div class="img-wrap">
-                        <span class="fa fa-regular fa-heart"></span>
-                        <img src="~/img/2.jpeg" alt="ürün 1" class="card-img-top">
-                    </div>
+@{
+    var urunler = (List<Urun>)ViewData["BenzerUrunler"]!;
 
-                    <div class="border-top info-wrap">
-                        <a href="#" class="title text-truncate">Apple Watch Yıldız Işığı Alüminyum Kasa ve spor Kordon</a>
-                        <div class="price-wrap mb-3">
-                            <span class="price-discount">45.999 ₺</span>
-                            <del class="price">49.999 ₺</del>
+    if(urunler.Count > 0){
+
+        <section class="mt-3">
+            <div class="container">
+                <h4 class="mb-3">Benzer Ürünler</h4>
+                <div class="row gy-3">
+                    @foreach (var item in urunler)
+                    {
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="card shadow">
+                                <div class="img-wrap">
+                                    <span class="fa fa-regular fa-heart"></span>
+                                    <img src="~/img/@item.Resim" alt="@item.UrunAdi" class="card-img-top">
+                                </div>
+
+                                <div class="border-top info-wrap">
+                                    <a asp-controller="Urun" asp-action="Details" asp-route-id ="@item.Id" class="title text-truncate">@item.Aciklama</a>
+                                        <div class="price-wrap mb-3">
+                                            <span class="price-discount">@item.Fiyat ₺</span>
+                                            @* <del class="price">49.999 ₺</del> *@
+                                        </div>
+                                        <a href="#" class="btn btn-light w-100">
+                                            <i class="fa fa-shopping-basket me-1"></i> Sepete Ekle
+                                        </a>
+                                </div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-light w-100">
-                            <i class="fa fa-shopping-basket me-1"></i> Sepete Ekle
-                        </a>
-                    </div>
+                    }
+
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="card shadow">
-                    <div class="img-wrap">
-                        <span class="fa fa-regular fa-heart"></span>
-                        <img src="~/img/2.jpeg" alt="ürün 1" class="card-img-top">
-                    </div>
+        </section>
+    }
 
-                    <div class="border-top info-wrap">
-                        <a href="#" class="title text-truncate">Apple Watch Yıldız Işığı Alüminyum Kasa ve spor Kordon</a>
-                        <div class="price-wrap mb-3">
-                            <span class="price-discount">45.999 ₺</span>
-                            <del class="price">49.999 ₺</del>
-                        </div>
-                        <a href="#" class="btn btn-light w-100">
-                            <i class="fa fa-shopping-basket me-1"></i> Sepete Ekle
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="card shadow">
-                    <div class="img-wrap">
-                        <span class="fa fa-regular fa-heart"></span>
-                        <img src="~/img/2.jpeg" alt="ürün 1" class="card-img-top">
-                    </div>
-
-                    <div class="border-top info-wrap">
-                        <a href="#" class="title text-truncate">Apple Watch Yıldız Işığı Alüminyum Kasa ve spor Kordon</a>
-                        <div class="price-wrap mb-3">
-                            <span class="price-discount">45.999 ₺</span>
-                            <del class="price">49.999 ₺</del>
-                        </div>
-                        <a href="#" class="btn btn-light w-100">
-                            <i class="fa fa-shopping-basket me-1"></i> Sepete Ekle
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="card shadow">
-                    <div class="img-wrap">
-                        <span class="fa fa-regular fa-heart"></span>
-                        <img src="~/img/2.jpeg" alt="ürün 1" class="card-img-top">
-                    </div>
-
-                    <div class="border-top info-wrap">
-                        <a href="#" class="title text-truncate">Apple Watch Yıldız Işığı Alüminyum Kasa ve spor Kordon</a>
-                        <div class="price-wrap mb-3">
-                            <span class="price-discount">45.999 ₺</span>
-                            <del class="price">49.999 ₺</del>
-                        </div>
-                        <a href="#" class="btn btn-light w-100">
-                            <i class="fa fa-shopping-basket me-1"></i> Sepete Ekle
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+}

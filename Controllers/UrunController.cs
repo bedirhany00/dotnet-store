@@ -18,9 +18,9 @@ public class UrunController : Controller
         return View(urunler);
     }
 
-    public ActionResult List()
+    public ActionResult List(string url)
     {
-        var urunler = _context.Urunler.Where(i => i.Aktif).ToList();
+        var urunler = _context.Urunler.Where(i => i.Aktif && i.Kategori.Url == url).ToList();
         return View(urunler);
     }
 
@@ -30,9 +30,12 @@ public class UrunController : Controller
         // var urun = _context.Urunler.Find(id); 
         if (urun == null)
         {
-            return NotFound();
+            return RedirectToAction("Index","Home");
         }
-
+        ViewData["BenzerUrunler"] = _context.Urunler
+                                            .Where(i => i.Aktif && i.KategoriId == urun.KategoriId && i.Id != urun.Id)
+                                            .Take(4)
+                                            .ToList();
         return View(urun);
     }
 }
