@@ -12,16 +12,35 @@ public class UrunController : Controller
         _context = context;
     }
 
-    public ActionResult Index ()
+    public ActionResult Index()
     {
         var urunler = _context.Urunler.ToList();
         return View(urunler);
     }
 
-    public ActionResult List(string url)
+
+    // http://localhost:5162/urunler/telefon?q=apple
+    //route params: url => value
+    //query string: q   => value
+    public ActionResult List(string url, string q)
     {
-        var urunler = _context.Urunler.Where(i => i.Aktif && i.Kategori.Url == url).ToList();
-        return View(urunler);
+        var query = _context.Urunler.Where(i=> i.Aktif); //Queryable
+
+        if (!string.IsNullOrEmpty(url))
+        {
+            //filtreleme
+            query = query.Where(i => i.Kategori.Url == url);
+        };
+
+        if (!string.IsNullOrEmpty(q))
+        {
+            //filtreleme
+            query = query.Where(i => i.UrunAdi.ToLower().Contains(q.ToLower()));
+
+            ViewData["q"] = q;
+        }
+
+        return View(query.ToList());
     }
 
     public ActionResult Details(int id)

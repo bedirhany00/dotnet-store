@@ -1,1 +1,6 @@
+@model List<Urun>
 <h1>Urun/index</h1>
+
+@foreach(var item in Model){
+    <div>@item.UrunAdi</div>
+}
