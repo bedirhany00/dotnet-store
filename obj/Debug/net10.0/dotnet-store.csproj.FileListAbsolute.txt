@@ -392,7 +392,6 @@ C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\rjimswa.dswa.cache
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\scopedcss\bundle\dotnet-store.styles.css
-C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\701cw6aq5m-{0}-tpznpjr8xw-tpznpjr8xw.gz
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\x1jtzzcwzc-{0}-vwipl5cvsg-vwipl5cvsg.gz
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\1o1crdvqqc-{0}-wqhl0zxvjx-wqhl0zxvjx.gz
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\svnfcdsgag-{0}-l6j59c68gs-l6j59c68gs.gz
@@ -469,3 +468,5 @@ C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\refint\dotnet-stor
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\dotnet-store.pdb
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\dotnet-store.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\ref\dotnet-store.dll
+C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\49kswhn6un-{0}-o2hci0pn77-o2hci0pn77.gz
+C:\Users\Administrator\Desktop\dotnet-store\obj\Debug\net10.0\compressed\lc716ummtx-{0}-hlcejebcki-hlcejebcki.gz

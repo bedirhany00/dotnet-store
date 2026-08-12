@@ -58,7 +58,7 @@ public class DataContext : DbContext
                 new Urun() { Id = 2,
                     UrunAdi="Apple Watch 8",
                     Fiyat=20000,
-                    Aktif=true,
+                    Aktif=false,
                     Resim="2.jpeg",
                     Anasayfa=true,
                     Aciklama = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam sapiente deleniti molestias consequuntur quos at temporibus, alias quidem recusandae facilis, in unde eaque porro totam iste dicta incidunt aliquid sed.",
