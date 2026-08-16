@@ -2502,19 +2502,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\bedir\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\dotnet-store\\dotnet-store.csproj",
+      "projectUniqueName": "C:\\Users\\bedir\\OneDrive\\Desktop\\dotnet-store\\dotnet-store.csproj",
       "projectName": "dotnet-store",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\dotnet-store\\dotnet-store.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\dotnet-store\\obj\\",
+      "projectPath": "C:\\Users\\bedir\\OneDrive\\Desktop\\dotnet-store\\dotnet-store.csproj",
+      "packagesPath": "C:\\Users\\bedir\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bedir\\OneDrive\\Desktop\\dotnet-store\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\bedir\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"

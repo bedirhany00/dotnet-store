@@ -27,7 +27,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
+// app.MapStaticAssets();
+app.UseStaticFiles();
 
 
 // urun/telefon

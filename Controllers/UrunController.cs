@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 using dotnet_store.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -78,21 +79,39 @@ public class UrunController : Controller
     }
 
     [HttpPost]
-    public ActionResult Create(UrunCreateModel model)
+    public async Task<ActionResult> Create(UrunCreateModel model)
     {
-        var entity = new Urun
+        if(model.Resim == null || model.Resim.Length == 0)
         {
-            UrunAdi = model.UrunAdi,
-            Aciklama = model.Aciklama,
-            Fiyat = model.Fiyat,
-            Aktif = model.Aktif,
-            Anasayfa = model.Anasayfa,
-            KategoriId = model.KategoriId,
-            Resim = "1.jpeg"
-        };
-        _context.Urunler.Add(entity);
-        _context.SaveChanges();
-        return RedirectToAction("Index");
+            ModelState.AddModelError("Resim", "Resim Seçmelisiniz");     
+        }
+        if (ModelState.IsValid)
+        {
+
+            var fileName = Path.GetRandomFileName() + ".jpg";
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", fileName);
+
+            using(var stream = new FileStream(path, FileMode.Create))
+            {
+                await model.Resim!.CopyToAsync(stream);
+            }
+
+            var entity = new Urun
+            {
+                UrunAdi = model.UrunAdi,
+                Aciklama = model.Aciklama,
+                Fiyat = model.Fiyat ?? 0,
+                Aktif = model.Aktif,
+                Anasayfa = model.Anasayfa,
+                KategoriId = (int)model.KategoriId!,
+                Resim = fileName
+            };
+            _context.Urunler.Add(entity);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        return View(model);
     }
 
     public ActionResult Edit(int id)
@@ -106,10 +125,51 @@ public class UrunController : Controller
             Anasayfa = i.Anasayfa,
             Fiyat = i.Fiyat,
             KategoriId = i.KategoriId,
-            Resim = i.Resim
+            ResimAdi = i.Resim
         }).FirstOrDefault(i => i.Id == id);
 
         ViewBag.Kategoriler = new SelectList(_context.Kategoriler.ToList(), "Id", "KategoriAdi");
         return View(entity);
+    }
+
+
+    [HttpPost]
+    public async Task<ActionResult> Edit(int id, UrunEditModel model)
+    {
+        if(id != model.Id)
+        {
+            return RedirectToAction("Index");
+        }
+
+        var entity = _context.Urunler.FirstOrDefault(i => i.Id == model.Id);
+        if(entity != null)
+        {
+            if(model.ResimDosyasi != null)
+            {
+                var fileName = Path.GetRandomFileName() + ".jpg";
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", fileName);
+
+                using(var stream = new FileStream(path, FileMode.Create))
+                {
+                    await model.ResimDosyasi!.CopyToAsync(stream);
+                }   
+
+                entity.Resim =fileName;
+            }
+            entity.UrunAdi =  model.UrunAdi;
+            entity.Aciklama = model.Aciklama;
+            entity.Fiyat = model.Fiyat;
+            entity.Aktif = model.Aktif;
+            entity.Anasayfa = model.Anasayfa;
+            entity.KategoriId = model.KategoriId;
+
+            _context.SaveChanges();
+
+            TempData["Mesaj"] = $"{entity.UrunAdi} ürünü güncellendi";
+            
+
+            return RedirectToAction("Index");
+        }
+        return View(model);
     }
 }
